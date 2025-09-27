@@ -1,0 +1,582 @@
+{
+	"info": {
+		"_postman_id": "quarkus-product-management",
+		"name": "Quarkus Product Management API",
+		"description": "Complete API collection for testing the Quarkus Product Management system with all CRUD operations and additional features.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "quarkus-product-management"
+	},
+	"item": [
+		{
+			"name": "Product Management",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Gaming Laptop\",\n  \"description\": \"High-performance gaming laptop with RTX graphics\",\n  \"price\": 1299.99,\n  \"quantity\": 10\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Create a new product in the system"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Retrieve all products from the system"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/{{product_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"{{product_id}}"
+							]
+						},
+						"description": "Retrieve a specific product by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Gaming Laptop\",\n  \"description\": \"Updated high-performance gaming laptop with RTX graphics\",\n  \"price\": 1199.99,\n  \"quantity\": 15\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products/{{product_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"{{product_id}}"
+							]
+						},
+						"description": "Update an existing product"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/{{product_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"{{product_id}}"
+							]
+						},
+						"description": "Delete a product from the system"
+					},
+					"response": []
+				}
+			],
+			"description": "Basic CRUD operations for product management"
+		},
+		{
+			"name": "Stock Management",
+			"item": [
+				{
+					"name": "Check Stock Availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/{{product_id}}/stock?count=5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"{{product_id}}",
+								"stock"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "5",
+									"description": "Number of items to check availability for"
+								}
+							]
+						},
+						"description": "Check if sufficient stock is available for a product"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Stock Availability (Default Count)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/{{product_id}}/stock",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"{{product_id}}",
+								"stock"
+							]
+						},
+						"description": "Check stock availability with default count of 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Low Stock Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/low-stock?threshold=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"low-stock"
+							],
+							"query": [
+								{
+									"key": "threshold",
+									"value": "10",
+									"description": "Stock threshold for low stock alert"
+								}
+							]
+						},
+						"description": "Get products with stock below the specified threshold"
+					},
+					"response": []
+				}
+			],
+			"description": "Stock management and availability checking features"
+		},
+		{
+			"name": "Product Search & Sorting",
+			"item": [
+				{
+					"name": "Get Products Sorted by Price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/sorted-by-price",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"sorted-by-price"
+							]
+						},
+						"description": "Get all products ordered by price in ascending order"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Products by Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/search?name=Gaming",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Gaming",
+									"description": "Product name to search for (case-insensitive)"
+								}
+							]
+						},
+						"description": "Search for products by name (case-insensitive)"
+					},
+					"response": []
+				}
+			],
+			"description": "Product search and sorting capabilities"
+		},
+		{
+			"name": "Sample Data Setup",
+			"item": [
+				{
+					"name": "Create Sample Products",
+					"item": [
+						{
+							"name": "Create Gaming Laptop",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Gaming Laptop\",\n  \"description\": \"High-performance gaming laptop with RTX 4070\",\n  \"price\": 1299.99,\n  \"quantity\": 10\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								},
+								"description": "Create a gaming laptop product"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Gaming Desktop",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Gaming Desktop\",\n  \"description\": \"High-performance gaming desktop with RTX 4080\",\n  \"price\": 1999.99,\n  \"quantity\": 5\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								},
+								"description": "Create a gaming desktop product"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Office Chair",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Ergonomic Office Chair\",\n  \"description\": \"Comfortable ergonomic office chair with lumbar support\",\n  \"price\": 299.99,\n  \"quantity\": 25\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								},
+								"description": "Create an office chair product"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Mechanical Keyboard",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Mechanical Keyboard\",\n  \"description\": \"RGB mechanical keyboard with Cherry MX switches\",\n  \"price\": 149.99,\n  \"quantity\": 50\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								},
+								"description": "Create a mechanical keyboard product"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Wireless Mouse",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Wireless Gaming Mouse\",\n  \"description\": \"High-precision wireless gaming mouse with RGB lighting\",\n  \"price\": 79.99,\n  \"quantity\": 3\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								},
+								"description": "Create a wireless mouse product with low stock"
+							},
+							"response": []
+						}
+					],
+					"description": "Create sample products for testing"
+				}
+			],
+			"description": "Sample data setup for testing all API endpoints"
+		},
+		{
+			"name": "Error Handling Tests",
+			"item": [
+				{
+					"name": "Create Product - Invalid Data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"\",\n  \"description\": \"Invalid product\",\n  \"price\": -10.0,\n  \"quantity\": -5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Test validation with invalid product data"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product - Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/99999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"99999"
+							]
+						},
+						"description": "Test getting a non-existent product"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product - Not Found",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Product\",\n  \"description\": \"Updated description\",\n  \"price\": 199.99,\n  \"quantity\": 75\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products/99999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"99999"
+							]
+						},
+						"description": "Test updating a non-existent product"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product - Not Found",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/99999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"99999"
+							]
+						},
+						"description": "Test deleting a non-existent product"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Stock - Product Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/99999/stock?count=5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"99999",
+								"stock"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Test stock check for non-existent product"
+					},
+					"response": []
+				}
+			],
+			"description": "Test error handling scenarios"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "product_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
